@@ -17,7 +17,9 @@
       </header>
       <div class="about">year     ( {{ movie['year'] }} )</div>
       <div class="about">movie_id ( {{ movie['movie_id'] }} )</div>
-      <div class="about">imdb_id  ( {{ movie['imdb_id'] }} )</div>
+      <div class="link">imdb_id  <a href="https://www.imdb.com/title/tt{{"{:0>7}".format(movie['imdb_id'])}}/">
+      ( tt{{"{:0>7}".format(movie['imdb_id']) }} )</a></div>
+      
       <p class="body">{{ movie['description'] }}</p>
     </article>
     {% if not loop.last %}

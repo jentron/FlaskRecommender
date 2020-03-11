@@ -12,7 +12,7 @@ bp = Blueprint('main', __name__)
 def index():
     db = get_db()
     movies = db.execute(
- 	 'SELECT * FROM movies ORDER BY RANDOM() LIMIT 10;'
+     'SELECT * FROM movies ORDER BY RANDOM() LIMIT 10;'
     ).fetchall()
     return render_template('main/index.html', movies=movies)
 
@@ -84,13 +84,12 @@ def update(id):
 
     return render_template('main/update.html', post=post)
 
-@bp.route('/<int:id>/delete', methods=('POST',))
+@bp.route('/cookie', methods=('POST','GET'))
 #@login_required
-def delete(id):
-    get_post(id)
-    db = get_db()
-    db.execute('DELETE FROM posts WHERE post_id = ?', (id,))
-    db.commit()
+def cookies():
+
     return redirect(url_for('main.index'))
 
-
+@bp.route('/favicon.ico', methods=('POST','GET'))
+def favicon():
+    return redirect(url_for('static', filename='favicon.ico'))

@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# don't save database files or csv files
+database/*.db
+database/*.csv
+

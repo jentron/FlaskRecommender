@@ -47,4 +47,11 @@ document.getElementById('movie'+id).classList.remove('selected'); //remove
             setSessionCookie("selected", cvalue.toString());
     };
 
+function markAllSelected(){
+  cvalue = getCookie("selected").split(",");
+  cvalue.forEach(function(item, index){
+     e=document.getElementById('movie'+item);
+     if(e != null) e.classList.add('selected'); 
+  });
+}
 

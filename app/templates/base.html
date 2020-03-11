@@ -5,12 +5,14 @@
 <script src="{{ url_for('static', filename='cookies.js') }}"></script>
 <nav>
   <h1>Flask Recommendation Engine</h1>
-  <a href='/cookie'>Test Cookie</a>
+  <a href='/'>Random Movies</a>
+  <a href='/selected'>Selected Movies</a>
 </nav>
 <section class="content">
   <header>
     {% block header %}{% endblock %}
   </header>
+  <body {% block body_attrs %}{% endblock %}>
   {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>
   {% endfor %}

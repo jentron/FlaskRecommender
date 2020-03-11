@@ -14,32 +14,17 @@ def index():
     movies = db.execute(
      'SELECT * FROM movies ORDER BY RANDOM() LIMIT 10;'
     ).fetchall()
-    return render_template('main/index.html', movies=movies)
+    return render_template('main/index.html', movies=movies, title='Random Movies')
 
-@bp.route('/create', methods=('GET', 'POST'))
+@bp.route('/selected', methods=('GET', 'POST'))
 ## @login_required
-def create():
-    if request.method == 'POST':
-        title = request.form['title']
-        body = request.form['body']
-        error = None
+def selected():
+    selected=request.cookies.get('selected')
 
-        if not title:
-            error = 'Title is required.'
-
-        if error is not None:
-            flash(error)
-        else:
-            db = get_db()
-            db.execute(
-                'INSERT INTO posts (title, body, user_id)'
-                ' VALUES (?, ?, ?)',
-                (title, body, g.user['user_id'])
-            )
-            db.commit()
-            return redirect(url_for('blog.index'))
-
-    return render_template('blog/create.html')
+    db = get_db()
+    movies = db.execute(
+     'SELECT * FROM movies where movie_id in ('+selected+') ORDER BY title LIMIT 10 ;').fetchall()
+    return render_template('main/index.html', movies=movies, title='Selected Movies')
 
 def get_post(id, check_author=True):
     post = get_db().execute(

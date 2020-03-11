@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Random Movies{% endblock %}</h1>
+  <h1>{% block title %}{{title}}{% endblock %}</h1>
   {% if g.user %}
     <a class="action" href="{{ url_for('blog.create') }}">New</a>
   {% endif %}
+  <script type="text/javascript"> 
+
+  </script>
 {% endblock %}
+
+{% block body_attrs %} onload="markAllSelected();" {% endblock %}
 
 {% block content %}
   {% for movie in movies %}

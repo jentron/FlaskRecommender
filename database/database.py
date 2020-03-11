@@ -15,6 +15,7 @@ DATABASE = 'movie1.db'
 
 conn = sqlite3.connect(DATABASE)
 
+movie_db = pd.read_csv("movies.csv")
 
 #%% Create the database
 with app.app_context():

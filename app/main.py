@@ -20,6 +20,9 @@ def index():
 ## @login_required
 def selected():
     selected=request.cookies.get('selected')
+    
+    if selected is None:
+      return render_template('main/index.html', movies="", title='No Selected Movies')
 
     db = get_db()
     movies = db.execute(

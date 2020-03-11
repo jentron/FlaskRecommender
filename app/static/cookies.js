@@ -32,3 +32,19 @@ function getCookie(cname) {
   }
   return "";
 }
+
+function toggleSelection(id){
+            cvalue = getCookie("selected").split(",");
+            var idx = cvalue.indexOf(id.toString());
+            if(idx < 0) {
+document.getElementById('movie'+id).classList.add('selected'); //add
+              if(cvalue == "") cvalue = [id];
+              else cvalue.push(id);
+            } else {
+document.getElementById('movie'+id).classList.remove('selected'); //remove
+              cvalue.splice(idx, 1);
+            }
+            setSessionCookie("selected", cvalue.toString());
+    };
+
+

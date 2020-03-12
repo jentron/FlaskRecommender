@@ -12,6 +12,14 @@
     <input name="titlewords" id="titlewords" required>
     <input type="submit" value="Search">
   </form>
+  <div> Search term(s):
+    {% for word in words %}
+      <div>
+        {{ word }} 
+      </div>
+    {% endfor %}
+    <hr>
+  </div>
   {% for movie in movies %}
     <article class="post">
       <header>

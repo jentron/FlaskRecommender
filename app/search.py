@@ -12,13 +12,19 @@ bp = Blueprint('search', __name__)
 @bp.route('/search', methods=('GET', 'POST'))
 def search():
     movies=""
+    words=""
     if request.method == 'POST':
-        sss = request.form['titlewords']
+        var = request.form['titlewords'].lower()
+        words = var.split(" ")
+        where = ""
+        for word in words:
+            where = where+"lower(TITLE) like '%"+word+"%' AND "
+      
+        where = where[:-5]
+        sql="select * from movies where "+where+" ORDER BY RANDOM() LIMIT 10;"
+
         db = get_db()
-        movies = db.execute(
-            'SELECT * FROM movies WHERE title like ?', ("%Toy%",)
-        ).fetchall()
+        movies = db.execute(sql).fetchall()
 
-
-    return render_template('main/search.html', movies=movies, title='Search For Movies')
+    return render_template('main/search.html', movies=movies, words=words, title='Search For Movies')
 

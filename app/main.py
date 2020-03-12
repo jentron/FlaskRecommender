@@ -18,7 +18,8 @@ def index():
 
 @bp.route('/search', methods=('GET', 'POST'))
 def search():
-    return render_template('main/index.html', movies=movies, title='Search For Movies')
+    movies=""
+    return render_template('main/search.html', movies=movies, title='Search For Movies')
 
 
 @bp.route('/selected', methods=('GET', 'POST'))

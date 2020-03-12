@@ -27,6 +27,9 @@ def create_app(test_config=None):
     from . import db
     db.init_app(app)
 
+    from . import search
+    app.register_blueprint(search.bp)
+
 #    from . import auth
 #    app.register_blueprint(auth.bp)
 

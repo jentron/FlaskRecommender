@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{title}}{% endblock %}</h1>
+{% endblock %}
+
+{% block body_attrs %} onload="markAllSelected();" {% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="titlewords">Search Titles</label>
+    <input name="titlewords" id="titlewords" required>
+    <input type="submit" value="Search">
+  </form>
+  {% for movie in movies %}
+    <article class="post">
+      <header>
+        <div onclick="toggleSelection({{movie.movie_id}});" id="movie{{ movie['movie_id'] }}">
+          <h1>{{ movie['title'] }}</h1>
+        </div>
+      </header>
+      <div class="about">year     ( {{ movie['year'] }} )</div>
+      <div class="about">movie_id ( {{ movie['movie_id'] }} )</div>
+      <div class="link">imdb_id  <a href="https://www.imdb.com/title/tt{{"{:0>7}".format(movie['imdb_id'])}}/">
+      ( tt{{"{:0>7}".format(movie['imdb_id']) }} )</a></div>
+      
+      <p class="body">{{ movie['description'] }}</p>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

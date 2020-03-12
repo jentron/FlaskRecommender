@@ -17,3 +17,5 @@ Installation:
     - the file database.py loads the sql schema from movies_db_ddl.sq 
   - cd back to the root folder (e.g.  ~/Documents/Weber/CS3580/FlaskRecommender/ )
   - launch the project with ./startup.sh
+  - launch the url (http://127.0.0.1:5000/)
+  

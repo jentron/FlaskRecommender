@@ -5,9 +5,12 @@
 <script src="{{ url_for('static', filename='cookies.js') }}"></script>
 <nav>
   <h1>Flask Recommendation Engine</h1>
-  <a href='/'>Random Movies</a>
-  <a href='/search'>Search Movies</a>
-  <a href='/selected'>Selected Movies</a>
+  <ul>
+    <li><a href='/'>Random Movies</a></li>
+    <li><a href='/recommend'>Recommended Movies</a></li>
+    <li><a href='/search'>Search Movies</a></li>
+    <li><a href='/selected'>Selected Movies</a></li>
+  </ul>
 </nav>
 <section class="content">
   <header>

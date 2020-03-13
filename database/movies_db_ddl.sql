@@ -10,6 +10,8 @@ CREATE TABLE movies
 	title     TEXT    NOT NULL,
 	year      INT     NOT NULL,
 	imdb_id   TEXT     NOT NULL,
+	imdb_rating NUMBER NULL,
+	imdb_poster TEXT NULL,
 	description TEXT
 );
 

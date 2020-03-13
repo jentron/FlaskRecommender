@@ -27,8 +27,8 @@ with app.app_context():
 
 count = 0
 for index, movie in movie_db.iterrows():
-    title = re.sub(r'^(.*) \(([1-2][0-9]{3})\)$',r'\1',movie.title)
-    year  = re.sub(r'^(.*) \(([1-2][0-9]{3})\)$',r'\2',movie.title)
+    title = re.sub(r'^(.*?)\s*\(([1-2][0-9]{3})\)\s*$',r'\1',movie.title)
+    year  = re.sub(r'^(.*)\(([1-2][0-9]{3})\)\s*$',r'\2',movie.title)
 #    conn.execute(f"INSERT INTO movies (movie_id,title,year,imdb_id) \
 #      VALUES ({movie.movieId}, '{title}', {year}, {movie.imdbId});")
     conn.execute("INSERT INTO movies (movie_id,title,year,imdb_id) \

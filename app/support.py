@@ -8,8 +8,7 @@ import numpy as np
 from collections import OrderedDict
 
 def jaccard_similarity(movie_ids, desired_ids):
-    """ 
-    movie_ids is all the movies to test against
+    """    movie_ids is all the movies to test against
     desired_ids is the selected movies
     """
     dict = {}
@@ -23,14 +22,13 @@ def jaccard_similarity(movie_ids, desired_ids):
     return OrderedDict(sorted(dict.items(), reverse=True, key=lambda t: t[1]))
 
 def imdb_update(movies):
-    """imdb_update(movies)
-    update (if required) the poster url and rating
-    note: if poster url is non-null, both url and rating are assumed good
+    """    update (if required) the imdb_poster url and imdb_rating
+    note: if imdb_poster url is non-null, both url and imdb_rating are assumed good
     """
     for movie in movies:
-        if movie.url is None:
+        if movie['imdb_poster'] is None:
             pass
-            # get url and rating from imdb
-            # write url and rating to database
+            # get imdb_poster url and imdb_rating from imdb
+            # write imdb_poster url and imdb_rating to database
     
     return (movies)

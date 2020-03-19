@@ -24,11 +24,13 @@
     <article class="post">
       <header>
         <div onclick="toggleSelection({{movie.movie_id}});" id="movie{{ movie['movie_id'] }}">
-          <h1>{{ movie['title'] }}</h1>
+          <div class="poster"><img src="{{ movie['imdb_poster'] }}" width="182" height="268"> </div>
+          <div class="movie_title">{{ movie['title'] }}</div>
         </div>
       </header>
       <div class="about">year     ( {{ movie['year'] }} )</div>
       <div class="about">movie_id ( {{ movie['movie_id'] }} )</div>
+      <div class="about">IMDB Rating ( {{ movie['imdb_rating'] }} )</div>
       <div class="link">imdb_id  <a href="https://www.imdb.com/title/tt{{"{:0>7}".format(movie['imdb_id'])}}/">
       ( tt{{"{:0>7}".format(movie['imdb_id']) }} )</a></div>
       

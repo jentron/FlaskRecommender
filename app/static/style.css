@@ -23,5 +23,6 @@ nav ul li a, nav ul li span, header .action { display: block; padding: 0.5rem; }
 .content input, .content textarea { margin-bottom: 1em; }
 .content textarea { min-height: 12em; resize: vertical; }
 .selected { color: #7f0000; font-style: bold; border: 1px solid #377ba8; }
+.movie_title { font-family: serif; font-size: x-large; color: #377ba8; margin: 1rem 0; }
 input.danger { color: #cc2f2e; }
 input[type=submit] { align-self: start; min-width: 10em; }

@@ -23,3 +23,11 @@ CREATE TABLE movie_genres
 	FOREIGN KEY(movie_id) REFERENCES movies(movie_id),
 	FOREIGN KEY(genre_id) REFERENCES genres(genre_id)
 );
+
+CREATE INDEX idx_movie_id
+ON movie_genres (movie_id);
+
+CREATE INDEX idx_genre_id
+ON movie_genres (genre_id);
+
+

@@ -10,7 +10,6 @@ I was thinking about doing the project using:
 
 Installation:
   - Clone the repository
-  - Download Dr. Ball's movies.csv and movie_descriptions.csv and store them in "database"
   - cd into "database" and run "python3 database.py" 
     - this will create the movies1.db file
     - this will fail if the movies1.db file already exists

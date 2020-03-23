@@ -5,7 +5,6 @@ from werkzeug.exceptions import abort
 
 #from app.auth import login_required
 from app.db import get_db
-from app.support import imdb_update
 
 bp = Blueprint('search', __name__)
 
@@ -26,7 +25,6 @@ def search():
 
         db = get_db()
         movies = db.execute(sql).fetchall()
-        movies = imdb_update(movies)
 
     return render_template('main/search.html', movies=movies, words=words, title='Search For Movies')
 

@@ -17,7 +17,11 @@
     <article class="post">
       <header>
         <div onclick="toggleSelection({{movie.movie_id}});" id="movie{{ movie['movie_id'] }}">
+         {% if movie['imdb_poster'] %}
           <div class="poster"><img src="{{ movie['imdb_poster'] }}" width="182" height="268"> </div>
+         {%else %}
+          <div class="poster"><img src="/{{ movie['movie_id'] }}/imdbimage" width="182" height="268"> </div>
+         {% endif %}
           <div class="movie_title">{{ movie['title'] }}</div>
         </div>
       </header>

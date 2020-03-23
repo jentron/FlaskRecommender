@@ -5,7 +5,6 @@ from werkzeug.exceptions import abort
 
 #from app.auth import login_required
 from app.db import get_db
-from app.support import imdb_update
 from app.support import jaccard_similarity
 
 bp = Blueprint('recommend', __name__)
@@ -33,6 +32,5 @@ def recommend():
     movies = db.execute('SELECT * FROM movies WHERE movie_id IN (%s) order by title' % 
                         ','.join('?'*len(movie_ids)), movie_ids).fetchall()
 
-    movies = imdb_update(movies) ## add the poster url and rating if needed
     return render_template('main/index.html', movies=movies, title='Recommended for You: '+','.join(str(e) for e in desired_ids))
 

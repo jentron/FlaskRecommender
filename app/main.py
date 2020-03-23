@@ -5,7 +5,7 @@ from werkzeug.exceptions import abort
 
 #from app.auth import login_required
 from app.db import get_db
-from app.support import imdb_update
+from app.support import imdb_update_poster
 
 bp = Blueprint('main', __name__)
 
@@ -15,7 +15,6 @@ def index():
     movies = db.execute(
      'SELECT * FROM movies ORDER BY RANDOM() LIMIT 10;'
     ).fetchall()
-    movies = imdb_update(movies)
     return render_template('main/index.html', movies=movies, title='Random Movies')
 
 @bp.route('/selected', methods=('GET', 'POST'))
@@ -29,7 +28,6 @@ def selected():
     db = get_db()
     movies = db.execute(
      'SELECT * FROM movies where movie_id in ('+selected+') ORDER BY title LIMIT 10 ;').fetchall()
-    movies = imdb_update(movies)
     return render_template('main/index.html', movies=movies, title='Selected Movies')
 
 def get_post(id, check_author=True):
@@ -47,6 +45,14 @@ def get_post(id, check_author=True):
         abort(403)
 
     return post
+
+@bp.route('/<int:movie_id>/imdbimage', methods=('GET',))
+def imdbimage(movie_id):
+    poster = imdb_update_poster(movie_id)
+    if poster is None:
+        return redirect(url_for('static', filename='favicon.ico'))
+    return(redirect(poster))
+
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 ##@login_required
